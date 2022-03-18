@@ -1,0 +1,42 @@
+.social {
+    cursor: pointer;
+    display: inline-block;
+    background: none;
+    border: 1.5px black solid;
+    border-radius: 3px;
+    padding: 0.5rem 0.5rem;
+    text-align: center;
+    text-decoration: none;
+    margin-right: 0.5rem;
+    margin: 1rem 0;
+    transition: all 0.2s ease-in;
+
+    &:hover {
+        background-color: black;
+
+        img {
+            filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(159deg) brightness(104%) contrast(103%);
+        }
+    }
+
+    img {
+        width: 20px;
+        height: 20px;
+        transition: all 0.2s ease-in;
+    }
+}
+
+.heart {
+    filter: invert(80%) sepia(69%) saturate(3941%) hue-rotate(312deg) brightness(96%) contrast(102%);
+}
+
+.paw {
+    filter: invert(100%) sepia(87%) saturate(0%) hue-rotate(275deg) brightness(104%) contrast(103%);
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 2rem auto 0.5rem auto;
+}
