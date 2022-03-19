@@ -1,3 +1,9 @@
+:root {
+    --lg-container: 1160px;
+    --size-bezel: 0.5rem;
+    --size-radius: 4px;
+}
+
 .social {
     cursor: pointer;
     display: inline-block;
@@ -39,4 +45,70 @@
     height: 1px;
     background-color: #ccc;
     margin: 2rem auto 0.5rem auto;
+}
+
+//Form
+.form-flex {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    max-width: 650px;
+    margin-top: 3rem;
+}
+
+.input-row {
+    margin: 1rem 0px;
+}
+
+.input {
+    position: relative;
+
+    textarea {
+        height: 5rem;
+    }
+
+    &__label {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: calc(var(--size-bezel) * 0.75) calc(var(--size-bezel) * 0.5);
+        margin: calc(var(--size-bezel) * 0.75 + 3px) calc(var(--size-bezel) * 0.5);
+        white-space: nowrap;
+        transform: translate(0, 0);
+        transform-origin: 0 0;
+        background: white;
+        transition: transform 120ms ease-in;
+        font-weight: bold;
+        line-height: 1.2;
+        color: rgba(0, 0, 0, 0.4);
+    }
+    &__field {
+        box-sizing: border-box;
+        display: block;
+        height: 3.5rem;
+        width: 100%;
+        border: 3px solid #757384;
+        padding: calc(var(--size-bezel) * 1.5) var(--size-bezel);
+        color: currentColor;
+        background: transparent;
+        border-radius: var(--size-radius);
+        font-family: "Input Sans";
+        font-size: 1rem;
+
+        &:focus,
+        &:not(:placeholder-shown) {
+            & + .input__label {
+                transform: translate(0.25rem, -65%) scale(0.8);
+                color: var(--color-primary);
+            }
+        }
+    }
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
 }

@@ -7,10 +7,12 @@ const Navbar = () => {
         <div className="navbar w-full h-auto p-5">
             <div className="navbar-container max-w-screen-xl flex justify-between my-0 mx-auto">
                 <div className="navbar-brand">
-                    <img src={logo} alt="logo" className="w-32 h-auto" />
+                    <NavLink to='/'>
+                        <img src={logo} alt="logo" className="w-32 h-auto" />
+                    </NavLink>
                 </div>
                 <ul className="navbar-nav flex items-center">
-                    <NavLink to='/'>
+                    <NavLink to='/cats'>
                         <li className='transition-all p-1 mx-2 hover:opacity-70'>Cat Adoption</li>
                     </NavLink>
                     <NavLink to='/'>
@@ -22,7 +24,7 @@ const Navbar = () => {
                     <NavLink to='/'>
                         <li className='transition-all p-1 mx-2 hover:opacity-70'>Blog</li>
                     </NavLink>
-                    <NavLink to='/'>
+                    <NavLink to='/contact'>
                         <li className='transition-all p-1 mx-2 hover:opacity-70'>Contact</li>
                     </NavLink>
                 </ul>

@@ -3,7 +3,7 @@ import paw from '../assets/icons/paw-solid.svg'
 
 const MorePetCard = () => {
     return (
-        <div className='w-60 h-72 bg-red-400 flex flex-col relative rounded-xl'>
+        <div className='bg-red-400 flex flex-col relative rounded-xl'>
             <div className="flex-grow flex flex-col justify-center items-center">
                 <img src={paw} alt="paw" className='w-24 h-24 paw' />
                 <p className='mt-8 px-6 text-center text-sm text-white'>26 more pets available at ARC</p>
