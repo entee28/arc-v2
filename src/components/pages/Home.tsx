@@ -1,18 +1,38 @@
 import PetCard from '../PetCard'
-import pet from '../../assets/images/pet.jpg'
 import MorePetCard from '../MorePetCard'
 import useWindowDimensions from '../../utils/useWindowDimensions'
+import { Link } from 'react-router-dom'
+import sanityClient from '../../client';
+import { useEffect, useState } from 'react'
 
 const Home = () => {
     const { width } = useWindowDimensions();
+    const [petData, setPet] = useState<[] | null>(null);
+
+    useEffect(() => {
+        sanityClient.fetch(`*[_type == "pet"]{
+            name,
+            slug,
+            mainImage{
+                asset->{
+                    _id,
+                    url
+                },
+                alt
+            }
+        }`).then(data => setPet(data)).catch(console.error)
+    }, [])
 
     return (
         <div>
-            <div className="hero w-full h-hero bg-hero bg-no-repeat bg-top bg-cover opacity-80 px-5">
+            <div className="hero w-full h-hero bg-hero bg-no-repeat bg-center bg-cover opacity-80 px-5">
                 <div className="hero-container max-w-screen-xl h-full mx-auto my-0 flex flex-col justify-center items-center lg:items-start">
                     <h2 className='text-4xl md:text-5xl text-center text-white mb-6 tracking-wide'>Welcome to ARC Pet Rescue, HCMC</h2>
                     <p className='text-white text-xl text-center md:text-2xl mb-8'>We rescue cats and dogs in need. And we need your help!</p>
-                    <button className='rounded-full transition-colors duration-200 bg-red-600 hover:bg-red-400 w-fit py-3 px-6 text-white'>Adopt One</button>
+                    <Link to='/adoption'>
+                        <button className='rounded-full transition-colors duration-200 bg-red-600 hover:bg-red-400 w-fit py-3 px-6 text-white'>Adopt One</button>
+
+                    </Link>
                 </div>
             </div>
 
@@ -27,14 +47,24 @@ const Home = () => {
                         We regularly conduct classes for neo-natal kitten care as this is a constant need within the community. If you'd like to attend one please get in touch for future dates.
                         Also we need people with skills that can help us in a multitude of areas. Marketing, website design, taking care of our cat house, fundraising events and more. No matter what small thing you can do it will all add up to more animals getting a real chance at life. Reach out! Join our ARC Army.
                     </p>
-                    <p className='text-lg mt-2 hidden sm:block'>
-                        Our funds are currently depleted. All charities are struggling. The pandemic has effected fundraising and the economic climate but there are so many animals that still need our help.
+                    <Link to='/contact'>
+                        <button className='mt-5 rounded-full transition-colors duration-300 border-red-400 border-2 text-black hover:text-white ease-in-out hover:bg-red-400 w-40 py-3 px-6'>Get In Touch</button>
+                    </Link>
+
+                </div>
+            </div>
+
+            <div className="w-full h-auto bg-donate bg-no-repeat bg-center bg-cover overlay-dark px-5 py-12">
+                <div className="max-w-screen-xl h-full mx-auto my-0 flex flex-col justify-center">
+                    <h2 className='text-4xl text-white mb-5'>We Need Your Help!</h2>
+                    <p className='text-white text-lg mb-6'>Our funds are currently depleted. All charities are struggling. The pandemic has effected fundraising and the economic climate but there are so many animals that still need our help.
                         Please if you can donate or volunteer with us! We need all the help we can get!
                     </p>
-                    <div className="btn-group flex gap-4 mt-8">
-                        <button className='rounded-full transition-colors duration-300 border-red-400 border-2 text-black hover:text-white ease-in-out hover:bg-red-400 w-40 py-3 px-6'>Get In Touch</button>
-                        <button className='rounded-full transition-colors duration-300 border-red-400 border-2 text-black hover:text-white ease-in-out hover:bg-red-400 w-40 py-3 px-6'>Donate</button>
-                    </div>
+                    <a href='https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.paypal.com%2Fdonate%2F%3Fhosted_button_id%3DT4PYT4GF3ZTYW%26fbclid%3DIwAR1G6w77nhVID_YI545-Re20pJv2F1vKgV7CIdkbpp_CgLLa1R2MTdR6c-4&h=AT1R2VWKbJ0V4MjYWe9W2S_DJFgFDdO4ZYs-tntPYtv9fjKX8BGBAREMb9qhGuCR4D-4MAAjHRT-9fem3BBCv1chZadkooSn70VndS-h0aTeK3SQ7nVCutSTRQbFu1Y98gAS'
+                        target='_blank' rel='noreferrer'>
+                        <button className='rounded-full transition-colors duration-200 bg-red-600 hover:bg-red-400 w-fit py-3 px-6 text-white'>Donate</button>
+
+                    </a>
                 </div>
             </div>
 
@@ -42,11 +72,21 @@ const Home = () => {
                 <div className="available-pet-container max-w-screen-xl mx-auto my-0 flex flex-col items-center pt-36 pb-10">
                     <h2 className='text-red-600 text-4xl mb-8 tracking-wide text-center'>Pets Available for Adoption</h2>
                     <div className="pets grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                        <PetCard image={pet} name='Boo' />
-                        <PetCard image={pet} name='Boo' />
-                        <PetCard image={pet} name='Boo' />
-                        {width < 1024 ? null : <PetCard image={pet} name='Boo' />}
-                        <MorePetCard />
+                        {width >= 1024 && petData && petData.map((pet: any, index) => {
+                            if (index < 4) {
+                                return <Link to='/'><PetCard key={index} image={pet.mainImage.asset.url} name={pet.name} /></Link>
+                            }
+                        })}
+
+                        {width < 1024 && petData && petData.map((pet: any, index) => {
+                            if (index < 3) {
+                                return <Link to='/'><PetCard key={index} image={pet.mainImage.asset.url} name={pet.name} /></Link>
+                            }
+                        })}
+
+
+                        {width >= 1024 && petData && petData.length > 4 && <MorePetCard amount={petData.length - 4} />}
+                        {width < 1024 && petData && petData.length > 3 && <MorePetCard amount={petData.length - 3} />}
                     </div>
                 </div>
             </div>

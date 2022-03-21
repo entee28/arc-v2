@@ -18,7 +18,7 @@ const Contact = () => {
         // axios.post('/api/contacts', body, config)
         //     .then(alert('Form submitted!'));
 
-        alert(data);
+        alert(JSON.stringify(data));
     };
 
     return (
