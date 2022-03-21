@@ -6,7 +6,7 @@ interface Props {
     image: string,
     sex?: string,
     age?: number,
-    status?: string
+    status?: string,
 }
 
 const PetCard = ({ name, image, sex, age, status }: Props) => {

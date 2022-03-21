@@ -22,11 +22,11 @@ const Contact = () => {
     };
 
     return (
-        <div className='w-full h-autp mt-28 mb-12 flex flex-col items-center'>
-            <h3 className='text-5xl mb-4'>Get in touch</h3>
-            <p className='max-w-[50%]'>Need help? We've got you. Our support is unmatched.</p>
-            <br />
-            <button className='btn btn-feature'>Email us</button>
+        <div className='w-full h-autp mt-20 mb-12 flex flex-col items-center'>
+            <h3 className='text-5xl mb-6'>Get in touch</h3>
+            <p className='max-w-[50%] text-lg'>Need help? We've got you. Our support is unmatched.</p>
+            <button className='border-2 px-6 py-2 border-black mt-8 hover:bg-black hover:text-white transition-colors
+                    duration-300 ease-out uppercase rounded-md font-bold'>Email us</button>
 
             <form className='form-flex' value="sentMessage" onSubmit={handleSubmit(onSubmit)}>
                 <div className="input-row">
@@ -79,7 +79,8 @@ const Contact = () => {
                     {errors?.message?.type === "required" && <p className='error'>This field is required</p>}
                 </div>
 
-                <button className="btn btn-feature" type='submit'>Send</button>
+                <button className="border-2 p-3 border-black mt-8 hover:bg-black hover:text-white transition-colors
+                    duration-300 ease-out uppercase rounded-md font-bold" type='submit'>Send</button>
             </form>
         </div>
     )

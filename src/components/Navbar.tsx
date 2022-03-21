@@ -12,20 +12,14 @@ const Navbar = () => {
                     </NavLink>
                 </div>
                 <ul className="navbar-nav flex items-center">
-                    <NavLink to='/cats'>
-                        <li className='transition-all p-1 mx-2 hover:opacity-70'>Cat Adoption</li>
+                    <NavLink to='/adoption'>
+                        <li className='transition-all p-1 mx-6 hover:opacity-70'>Pets Adoption</li>
                     </NavLink>
                     <NavLink to='/'>
-                        <li className='transition-all p-1 mx-2 hover:opacity-70'>Dog Adoption</li>
-                    </NavLink>
-                    <NavLink to='/'>
-                        <li className='transition-all p-1 mx-2 hover:opacity-70'>About Us</li>
-                    </NavLink>
-                    <NavLink to='/'>
-                        <li className='transition-all p-1 mx-2 hover:opacity-70'>Blog</li>
+                        <li className='transition-all p-1 mx-6 hover:opacity-70'>Blog</li>
                     </NavLink>
                     <NavLink to='/contact'>
-                        <li className='transition-all p-1 mx-2 hover:opacity-70'>Contact</li>
+                        <li className='transition-all p-1 mx-6 hover:opacity-70'>Contact</li>
                     </NavLink>
                 </ul>
             </div>
