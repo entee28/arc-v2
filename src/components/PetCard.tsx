@@ -1,5 +1,4 @@
-import React from 'react'
-import heart from '../assets/icons/heart-regular.svg'
+// import heart from '../assets/icons/heart-regular.svg'
 
 interface Props {
     name: string,

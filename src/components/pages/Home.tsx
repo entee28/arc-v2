@@ -1,11 +1,10 @@
-import React from 'react'
 import PetCard from '../PetCard'
 import pet from '../../assets/images/pet.jpg'
 import MorePetCard from '../MorePetCard'
 import useWindowDimensions from '../../utils/useWindowDimensions'
 
 const Home = () => {
-    const { width, height } = useWindowDimensions();
+    const { width } = useWindowDimensions();
 
     return (
         <div>
@@ -14,6 +13,28 @@ const Home = () => {
                     <h2 className='text-4xl md:text-5xl text-center text-white mb-6 tracking-wide'>Welcome to ARC Pet Rescue, HCMC</h2>
                     <p className='text-white text-xl text-center md:text-2xl mb-8'>We rescue cats and dogs in need. And we need your help!</p>
                     <button className='rounded-full transition-colors duration-200 bg-red-600 hover:bg-red-400 w-fit py-3 px-6 text-white'>Adopt One</button>
+                </div>
+            </div>
+
+            <div className="about w-full h-auto px-5 py-12">
+                <div className="about-container max-w-screen-xl mx-auto">
+                    <h2 className='text-4xl text-gray-400'>Who Are We?</h2>
+                    <div className='w-8 h-[3px] bg-gray-600 mt-1 mb-6 ml-1'></div>
+                    <p className='text-lg'>We are a small group of people working hard to provide support in Saigon.
+                        Our mission is to initiate and facilitate care, advocacy and awareness for animals in need.
+                    </p>
+                    <p className='text-lg mt-2'>
+                        We regularly conduct classes for neo-natal kitten care as this is a constant need within the community. If you'd like to attend one please get in touch for future dates.
+                        Also we need people with skills that can help us in a multitude of areas. Marketing, website design, taking care of our cat house, fundraising events and more. No matter what small thing you can do it will all add up to more animals getting a real chance at life. Reach out! Join our ARC Army.
+                    </p>
+                    <p className='text-lg mt-2 hidden sm:block'>
+                        Our funds are currently depleted. All charities are struggling. The pandemic has effected fundraising and the economic climate but there are so many animals that still need our help.
+                        Please if you can donate or volunteer with us! We need all the help we can get!
+                    </p>
+                    <div className="btn-group flex gap-4 mt-8">
+                        <button className='rounded-full transition-colors duration-300 border-red-400 border-2 text-black hover:text-white ease-in-out hover:bg-red-400 w-40 py-3 px-6'>Get In Touch</button>
+                        <button className='rounded-full transition-colors duration-300 border-red-400 border-2 text-black hover:text-white ease-in-out hover:bg-red-400 w-40 py-3 px-6'>Donate</button>
+                    </div>
                 </div>
             </div>
 
