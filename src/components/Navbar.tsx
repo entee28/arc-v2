@@ -15,7 +15,7 @@ const Navbar = () => {
                     <NavLink to='/adoption'>
                         <li className='transition-all p-1 mx-6 hover:opacity-70'>Pets Adoption</li>
                     </NavLink>
-                    <NavLink to='/'>
+                    <NavLink to='/blog'>
                         <li className='transition-all p-1 mx-6 hover:opacity-70'>Blog</li>
                     </NavLink>
                     <NavLink to='/contact'>

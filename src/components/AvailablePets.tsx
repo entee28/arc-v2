@@ -12,7 +12,7 @@ const AvailablePets = () => {
 
     useEffect(() => {
         sanityClient.fetch(`*[_type == "pet"]{
-            name,
+            title,
             slug,
             mainImage{
                 asset->{
@@ -31,13 +31,13 @@ const AvailablePets = () => {
                 <div className="pets grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
                     {width >= 1024 && petData && petData.map((pet: any, index) => {
                         if (index < 4) {
-                            return <Link key={index} to={'/adoption/' + pet.slug.current}><PetCard image={pet.mainImage.asset.url} name={pet.name} /></Link>
+                            return <Link key={index} to={'/adoption/' + pet.slug.current}><PetCard image={pet.mainImage.asset.url} name={pet.title} /></Link>
                         }
                     })}
 
                     {width < 1024 && petData && petData.map((pet: any, index) => {
                         if (index < 3) {
-                            return <Link key={index} to={'/adoption/' + pet.slug.current}><PetCard image={pet.mainImage.asset.url} name={pet.name} /></Link>
+                            return <Link key={index} to={'/adoption/' + pet.slug.current}><PetCard image={pet.mainImage.asset.url} name={pet.title} /></Link>
                         }
                     })}
 

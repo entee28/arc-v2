@@ -13,7 +13,7 @@ const PetDetail = () => {
 
     useEffect(() => {
         sanityClient.fetch(`*[slug.current == "${slug}"]{
-            name,
+            title,
             age,
             gender,
             slug,
@@ -50,7 +50,7 @@ const PetDetail = () => {
                     <div className='mt-14 grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8'>
                         <img src={singlePost.mainImage.asset.url} alt="Pet pic" className='w-full h-auto' />
                         <div>
-                            <h2 className='text-5xl font-bold mb-4'>{singlePost.name}</h2>
+                            <h2 className='text-5xl font-bold mb-4'>{singlePost.title}</h2>
                             <p className='py-2 border-black border-dashed border-b-2'>
                                 <span className='font-bold'>Age: </span>
                                 {singlePost.age && `${singlePost.age} months old`}
