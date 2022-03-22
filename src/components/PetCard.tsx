@@ -27,7 +27,6 @@ const PetCard = ({ name, image, gender, age }: Props) => {
                     {name}
                 </div>
             )}
-
         </div>
     )
 }
