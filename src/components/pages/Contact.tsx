@@ -1,8 +1,13 @@
 //@ts-nocheck
 
 import { useForm } from 'react-hook-form';
+import { useEffect } from 'react';
 
 const Contact = () => {
+    useEffect(() => {
+        document.title = "Contact Us | ARC";
+    })
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data: object) => {
         // // Headers

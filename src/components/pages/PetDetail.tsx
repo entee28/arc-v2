@@ -12,6 +12,12 @@ const PetDetail = () => {
     const [singlePost, setSinglePost] = useState<any | null>(null);
 
     useEffect(() => {
+        if (singlePost) {
+            document.title = `${singlePost.title} | ARC`;
+        }
+    }, [singlePost])
+
+    useEffect(() => {
         sanityClient.fetch(`*[slug.current == "${slug}"]{
             title,
             age,

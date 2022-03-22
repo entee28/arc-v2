@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom'
 import AvailablePets from '../AvailablePets';
+import { useEffect } from 'react';
 
 const Home = () => {
+    useEffect(() => {
+        document.title = "ARC Pet Rescue";
+    })
+
     return (
         <div>
             <div className="hero w-full h-hero bg-hero bg-no-repeat bg-center bg-cover opacity-80 px-5">

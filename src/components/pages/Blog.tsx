@@ -3,6 +3,10 @@ import sanityClient from "../../client"
 import BlogCard from '../BlogCard'
 
 const Blog = () => {
+    useEffect(() => {
+        document.title = "Blog | ARC";
+    })
+
     const [postData, setPost] = useState<[] | null>(null);
     useEffect(() => {
         sanityClient.fetch(`*[_type == "post"]{

@@ -15,6 +15,12 @@ const Post = () => {
     const { slug } = useParams();
 
     useEffect(() => {
+        if (singlePost) {
+            document.title = `${singlePost.title}`;
+        }
+    }, [singlePost])
+
+    useEffect(() => {
         sanityClient.fetch(`*[slug.current == "${slug}"]{
             title,
             _id,

@@ -8,6 +8,10 @@ const Adoption = () => {
     const [petData, setPet] = useState<[] | null>(null);
 
     useEffect(() => {
+        document.title = "Adoption | ARC";
+    })
+
+    useEffect(() => {
         sanityClient.fetch(`*[_type == "pet"]{
             title,
             slug,
