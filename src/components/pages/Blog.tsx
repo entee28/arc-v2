@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import sanityClient from "../../client"
-import { Link } from 'react-router-dom';
 import BlogCard from '../BlogCard'
 
 const Blog = () => {

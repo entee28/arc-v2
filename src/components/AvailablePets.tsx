@@ -33,12 +33,14 @@ const AvailablePets = () => {
                         if (index < 4) {
                             return <Link key={index} to={'/adoption/' + pet.slug.current}><PetCard image={pet.mainImage.asset.url} name={pet.title} /></Link>
                         }
+                        return null;
                     })}
 
                     {width < 1024 && petData && petData.map((pet: any, index) => {
                         if (index < 3) {
                             return <Link key={index} to={'/adoption/' + pet.slug.current}><PetCard image={pet.mainImage.asset.url} name={pet.title} /></Link>
                         }
+                        return null;
                     })}
 
 
