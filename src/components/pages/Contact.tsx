@@ -31,19 +31,6 @@ const Contact = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data: ContactForm) => {
-    // // Headers
-    // const config = {
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     }
-    // }
-
-    // // Request body
-    // const body = JSON.stringify(data);
-
-    // axios.post('/api/contacts', body, config)
-    //     .then(alert('Form submitted!'));
-
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
