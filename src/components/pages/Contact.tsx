@@ -1,11 +1,20 @@
-//@ts-nocheck
-
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const encode = (data) => {
+type ContactForm = {
+  name: string;
+  email: string;
+  subject?: string;
+  message: string;
+};
+
+const encode = (data: object) => {
   return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .map(
+      (key) =>
+        encodeURIComponent(key) + "=" + encodeURIComponent((data as any)[key])
+    )
     .join("&");
 };
 
@@ -14,12 +23,14 @@ const Contact = () => {
     document.title = "Contact Us | ARC";
   });
 
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data: object) => {
+  const onSubmit = (data: ContactForm) => {
     // // Headers
     // const config = {
     //     headers: {
@@ -28,7 +39,7 @@ const Contact = () => {
     // }
 
     // // Request body
-    const body = JSON.stringify(data);
+    // const body = JSON.stringify(data);
 
     // axios.post('/api/contacts', body, config)
     //     .then(alert('Form submitted!'));
@@ -36,12 +47,19 @@ const Contact = () => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", body }),
+      body: encode({
+        "form-name": "contact",
+        name: data.name,
+        email: data.email,
+        subject: data.subject,
+        message: data.message,
+      }),
     })
-      .then(() => alert("Success!"))
+      .then(() => {
+        alert("Your form is sent!");
+        navigate("/");
+      })
       .catch((error) => alert(error));
-
-    alert(JSON.stringify(data));
   };
 
   return (
@@ -66,7 +84,7 @@ const Contact = () => {
 
         <form
           className="form-flex lg:w-[80%] w-[90%]"
-          value="sentMessage"
+          //@ts-ignore
           onSubmit={handleSubmit(onSubmit)}
           name="contact"
         >
@@ -77,6 +95,7 @@ const Contact = () => {
                 type="text"
                 className="input__field"
                 placeholder=" "
+                //@ts-ignore
                 name="name"
                 id="name"
                 {...register("name", {
@@ -99,6 +118,7 @@ const Contact = () => {
               <input
                 className="input__field"
                 placeholder=" "
+                //@ts-ignore
                 name="email"
                 id="email"
                 {...register("email", {
@@ -122,6 +142,7 @@ const Contact = () => {
                 type="text"
                 className="input__field"
                 placeholder=" "
+                //@ts-ignore
                 name="subject"
                 id="subject"
                 {...register("subject")}
@@ -135,6 +156,7 @@ const Contact = () => {
               <textarea
                 className="input__field"
                 placeholder=" "
+                //@ts-ignore
                 name="subject"
                 id="subject"
                 {...register("message", {
