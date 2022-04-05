@@ -8,8 +8,9 @@ import { gsap, Expo } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 const AvailablePets = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
   const el = useRef<HTMLDivElement>(null);
-  const tl = useRef<GSAPTimeline>();
   const q = gsap.utils.selector(el);
 
   const { width } = useWindowDimensions();
@@ -43,7 +44,7 @@ const AvailablePets = () => {
         start: "top 60%",
       },
     });
-  }, []);
+  }, [q]);
 
   return (
     <div ref={el}>
