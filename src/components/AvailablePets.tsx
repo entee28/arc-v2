@@ -1,18 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import useWindowDimensions from "../utils/useWindowDimensions";
 import PetCard from "./PetCard";
 import MorePetCard from "./MorePetCard";
 import sanityClient from "../client";
 import { Link } from "react-router-dom";
-import { gsap, Expo } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
 const AvailablePets = () => {
-  gsap.registerPlugin(ScrollTrigger);
-
-  const el = useRef<HTMLDivElement>(null);
-  const q = gsap.utils.selector(el);
-
   const { width } = useWindowDimensions();
   const [petData, setPet] = useState<[] | null>(null);
 
@@ -33,21 +26,10 @@ const AvailablePets = () => {
       )
       .then((data) => setPet(data))
       .catch(console.error);
-
-    gsap.from(q(".available-pet"), {
-      scale: 0.6,
-      duration: 2,
-      opacity: 0,
-      ease: Expo.easeOut,
-      scrollTrigger: {
-        trigger: q(".available-pet"),
-        start: "top 60%",
-      },
-    });
-  }, [q]);
+  }, []);
 
   return (
-    <div ref={el}>
+    <div>
       <div className="available-pet w-full h-auto bg-[#fdf0f0] px-5">
         <div className="available-pet-container max-w-screen-xl mx-auto my-0 flex flex-col items-center pt-36 pb-10">
           <h2 className="text-red-600 font-bold text-4xl mb-8 text-center">
